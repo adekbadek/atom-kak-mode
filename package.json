@@ -8,7 +8,11 @@
   "license": "MIT",
   "scripts": {
     "cm": "git-cz",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "docs:build": "node docs/generate.js",
+    "docs:dev-watch": "nodemon --watch lib --watch docs/*.pug docs/generate.js",
+    "docs:dev-serve": "cd docs && reload -b",
+    "docs:dev": "concurrently npm:docs:dev-*"
   },
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
@@ -32,7 +36,9 @@
     "@semantic-release/changelog": "^3.0.1",
     "@semantic-release/git": "^7.0.5",
     "commitizen": "^3.0.5",
+    "concurrently": "^4.1.0",
     "cz-conventional-changelog": "^2.1.0",
+    "documentation": "^9.0.0",
     "eslint": "^5.10.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.14.0",
@@ -40,6 +46,9 @@
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
     "husky": "^1.2.1",
+    "nodemon": "^1.18.9",
+    "pug": "^2.0.3",
+    "reload": "^2.4.0",
     "semantic-release": "^15.13.0"
   },
   "config": {
