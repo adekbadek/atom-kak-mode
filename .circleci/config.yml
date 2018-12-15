@@ -26,6 +26,19 @@ jobs:
       - run:
           name: Publish package on apm
           command: npm run semantic-release
+  docs:
+    <<: *defaults
+    steps:
+      - checkout
+      - run: git checkout gh-pages
+      - run: git config user.email $GITHUB_EMAIL
+      - run: git config user.name $GITHUB_USERNAME
+      - run: npm install
+      - run: npm run docs:build
+      - run: mv docs/index.html ./
+      - run: git add .
+      - run: git commit -m 'update docs'
+      - run: git push -q https://${GITHUB_TOKEN}@github.com/${CIRCLE_USERNAME}/${CIRCLE_PROJECT_REPONAME}.git gh-pages --force
 
 workflows:
   version: 2
@@ -35,6 +48,12 @@ workflows:
       - publish:
           requires:
             - build
+          filters:
+            branches:
+              only: master
+      - docs:
+          requires:
+            - publish
           filters:
             branches:
               only: master
