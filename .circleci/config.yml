@@ -12,52 +12,29 @@ defaults: &defaults
 
 version: 2
 jobs:
-  checkout_code:
-    <<: *defaults
-    steps:
-      - checkout
   build:
     <<: *defaults
     steps:
-      - attach_workspace:
-          at: /tmp/project
-      - run:
-          name: Update system package lists
-          command: sudo apt-get update
-      - run:
-          name: Install some pre-requisite packages
-          command: sudo apt-get --assume-yes --quiet install curl xvfb
-      - run:
-          name: Start display server for Atom
-          command: /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x16 +extension RANDR
-          background: true
-      - run:
-          name: Download Atom build script
-          command: curl -s -O https://raw.githubusercontent.com/atom/ci/master/build-package.sh
-      - run:
-          name: Make build script executable
-          command: chmod u+x build-package.sh
-      - persist_to_workspace:
-          root: /tmp/project
-          paths:
-            - .
-  test:
+      - checkout
+      - run: ./.circleci/atom-build.sh
+  publish:
     <<: *defaults
     steps:
-      - attach_workspace:
-          at: /tmp/project
+      - checkout
+      - run: ./.circleci/atom-build.sh
+      - run: npm install
       - run:
-          name: Run package tests
-          command: ./build-package.sh
+          name: Publish package on apm
+          command: npm run semantic-release
 
 workflows:
   version: 2
   build-and-release:
     jobs:
-      - checkout_code
-      - build:
-          requires:
-            - checkout_code
-      - test:
+      - build
+      - publish:
           requires:
             - build
+          filters:
+            branches:
+              only: master
