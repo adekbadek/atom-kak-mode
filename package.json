@@ -25,9 +25,7 @@
     }
   },
   "dependencies": {
-    "escape-string-regexp": "^1.0.5",
-    "ramda": "^0.26.1",
-    "xregexp": "^4.2.0"
+    "ramda": "^0.26.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.2.1",
