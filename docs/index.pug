@@ -21,16 +21,17 @@ html
         table(cellspacing='0').w-100
           thead
             tr.tl
-              each colName, index in ['key', 'description']
+              each colName, index in ['key', 'description', 'with shift']
                 th(class=(index === 0 ? 'tr pr4' : 'tl')).pv2= colName
           tbody
             each val in docs
               tr
                 td.bt.tr.ph4
                   h1.code.mv2.ml2= val.name
-                td.bt
+                td.pr2.bt
                   each descItem in val.description.children
                     each descItemChild in descItem.children
                       span.dib.mr1= descItemChild.value
-                  each tag in val.tags
-                    code.mh1.pv1.ph2.f7.br-pill.bg-mid-gray.white= tag.description
+                td.pr2.bt
+                  each shift in val.tags.filter(v => v.title === 'shift')
+                    = shift.description
