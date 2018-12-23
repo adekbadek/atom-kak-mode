@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/adekbadek/atom-kak-mode/compare/v1.2.0...v1.2.1) (2018-12-23)
+
+
+### Bug Fixes
+
+* **count:** fixes count bugs ([dcb7229](https://github.com/adekbadek/atom-kak-mode/commit/dcb7229))
+
 # [1.2.0](https://github.com/adekbadek/atom-kak-mode/compare/v1.1.0...v1.2.0) (2018-12-23)
 
 
