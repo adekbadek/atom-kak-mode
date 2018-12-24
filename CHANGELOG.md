@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/adekbadek/atom-kak-mode/compare/v1.3.0...v1.3.1) (2018-12-24)
+
+
+### Bug Fixes
+
+* **b:** handle empty line ([2a5752e](https://github.com/adekbadek/atom-kak-mode/commit/2a5752e)), closes [#5](https://github.com/adekbadek/atom-kak-mode/issues/5)
+
 # [1.3.0](https://github.com/adekbadek/atom-kak-mode/compare/v1.2.1...v1.3.0) (2018-12-24)
 
 
