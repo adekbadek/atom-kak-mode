@@ -12,7 +12,8 @@
     "docs:build": "node docs/generate.js",
     "docs:dev-watch": "nodemon --watch lib --watch docs/*.pug docs/generate.js",
     "docs:dev-serve": "cd docs && reload -b",
-    "docs:dev": "concurrently npm:docs:dev-*"
+    "docs:dev": "concurrently npm:docs:dev-*",
+    "format": "prettier-standard"
   },
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
@@ -44,7 +45,10 @@
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
     "husky": "^1.2.1",
+    "lint-staged": "^8.1.0",
     "nodemon": "^1.18.9",
+    "prettier": "^1.15.3",
+    "prettier-standard": "^8.0.1",
     "pug": "^2.0.3",
     "reload": "^2.4.0",
     "semantic-release": "^15.13.0"
@@ -54,9 +58,16 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
+  "lint-staged": {
+    "*.js": [
+      "npm run format",
+      "git add"
+    ]
+  },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
     }
   }
 }

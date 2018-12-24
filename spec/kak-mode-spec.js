@@ -9,10 +9,13 @@ describe('KakMode', () => {
     workspaceElement = atom.views.getView(atom.workspace)
     jasmine.attachToDOM(workspaceElement)
 
-    simulateKeys = keys => keys.split().map(key => {
-      const event = atom.keymaps.constructor.buildKeydownEvent('i', { target: document.activeElement })
-      atom.keymaps.handleKeyboardEvent(event)
-    })
+    simulateKeys = keys =>
+      keys.split().map(key => {
+        const event = atom.keymaps.constructor.buildKeydownEvent('i', {
+          target: document.activeElement,
+        })
+        atom.keymaps.handleKeyboardEvent(event)
+      })
 
     waitsForPromise(() => atom.workspace.open())
     waitsForPromise(() => atom.packages.activatePackage('status-bar'))
@@ -21,7 +24,8 @@ describe('KakMode', () => {
 
   describe('status bar', () => {
     it('displays mode and handles mode update', () => {
-      const getStatusIndicator = () => workspaceElement.querySelector('kak-mode-status')
+      const getStatusIndicator = () =>
+        workspaceElement.querySelector('kak-mode-status')
       expect(getStatusIndicator().innerText).toMatch(MODES.NORMAL.inStatusBar)
       simulateKeys('i')
       expect(getStatusIndicator().innerText).toMatch(MODES.INSERT.inStatusBar)

@@ -7,21 +7,22 @@ const getTag = (tagName, tags) => tags.find(({ title }) => title === tagName)
 const generateHTMLDocs = async () => {
   const docs = await documentation.build(['lib/**'], {})
 
-  const getByTagName = (tagName, auxTags = []) => docs.reduce((acc, entry) => {
-    const tag = getTag(tagName, entry.tags)
-    const lol = auxTags.map(name => getTag(name, entry.tags))
-    if (tag) {
-      acc.push({
-        name: entry.name,
-        description: tag.description,
-        ...lol.reduce((acc, val) => {
-          val && (acc[val.title] = val.description)
-          return acc
-        }, {}),
-      })
-    }
-    return acc
-  }, [])
+  const getByTagName = (tagName, auxTagsNames = []) =>
+    docs.reduce((acc, entry) => {
+      const tag = getTag(tagName, entry.tags)
+      const auxTags = auxTagsNames.map(name => getTag(name, entry.tags))
+      if (tag) {
+        acc.push({
+          name: entry.name,
+          description: tag.description,
+          ...auxTags.reduce((acc, val) => {
+            val && (acc[val.title] = val.description)
+            return acc
+          }, {}),
+        })
+      }
+      return acc
+    }, [])
 
   const sections = [
     {
