@@ -22,9 +22,9 @@ describe('KakMode', () => {
   describe('status bar', () => {
     it('displays mode and handles mode update', () => {
       const getStatusIndicator = () => workspaceElement.querySelector('kak-mode-status')
-      expect(getStatusIndicator().innerText).toEqual(MODES.NORMAL.inStatusBar)
+      expect(getStatusIndicator().innerText).toMatch(MODES.NORMAL.inStatusBar)
       simulateKeys('i')
-      expect(getStatusIndicator().innerText).toEqual(MODES.INSERT.inStatusBar)
+      expect(getStatusIndicator().innerText).toMatch(MODES.INSERT.inStatusBar)
     })
   })
 })
