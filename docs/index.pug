@@ -1,5 +1,3 @@
-- normalCommands = docs.filter()
-
 doctype html
 html
   head
@@ -17,23 +15,20 @@ html
       .mw7.center
         h2.mt0 installation
         code $ apm install kak-mode
-    .bt.pv4
-      .mw7.center
-        h2.mt0 keys
-        table(cellspacing='0').w-100
-          thead
-            tr.tl
-              each colName, index in ['key', 'description', 'with shift']
-                th(class=(index === 0 ? 'tr pr4' : 'tl')).pv2= colName
-          tbody
-            each val in docs
-              tr
-                td.bt.tr.ph4
-                  h1.code.mv2.ml2= val.name
-                td.pr2.bt
-                  each descItem in val.description.children
-                    each descItemChild in descItem.children
-                      span.dib.mr1= descItemChild.value
-                td.pr2.bt
-                  each shift in val.tags.filter(v => v.title === 'shift')
-                    = shift.description
+    each section in sections
+      .bt.pv4
+        .mw7.center
+          h2.mt0= section.name
+          table(cellspacing='0').w-100
+            thead
+              tr.tl
+                each colName, index in ['key', 'description', ...section.auxCols]
+                  th(class=(index === 0 ? 'tr pr4' : 'tl')).pv2= colName
+            tbody
+              each command in section.commands
+                tr
+                  td.bt.tr.ph4
+                    h1.code.mv1.ml2= command.name
+                  td.pr2.bt
+                    span.dib.mr1= command.description
+                  td.pr2.bt= command.shift
