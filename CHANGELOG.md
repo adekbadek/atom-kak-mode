@@ -1,3 +1,16 @@
+# [1.3.0](https://github.com/adekbadek/atom-kak-mode/compare/v1.2.1...v1.3.0) (2018-12-24)
+
+
+### Bug Fixes
+
+* **test:** update test files ([98eec69](https://github.com/adekbadek/atom-kak-mode/commit/98eec69))
+
+
+### Features
+
+* **docs:** improves docs; adds docs for goto ([8e6f7a4](https://github.com/adekbadek/atom-kak-mode/commit/8e6f7a4))
+* adds goto (g key) command handling ([695f353](https://github.com/adekbadek/atom-kak-mode/commit/695f353)), closes [#2](https://github.com/adekbadek/atom-kak-mode/issues/2)
+
 ## [1.2.1](https://github.com/adekbadek/atom-kak-mode/compare/v1.2.0...v1.2.1) (2018-12-23)
 
 
