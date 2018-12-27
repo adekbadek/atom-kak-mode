@@ -1,7 +1,7 @@
 'use babel'
 
 import { MODES } from '../lib/consts'
-import { simulateKeys, initWorkspace } from './helpers'
+import { simulateKeySequence, initWorkspace } from './helpers'
 
 describe('KakMode', () => {
   let workspaceElement, mainModule
@@ -18,7 +18,7 @@ describe('KakMode', () => {
         MODES.NORMAL.inStatusBar
       )
       expect(mainModule.state.mode).toEqual(MODES.NORMAL)
-      simulateKeys('i')
+      simulateKeySequence('i')
       expect(getStatusIndicator().innerText.trim()).toEqual(
         MODES.INSERT.inStatusBar
       )
