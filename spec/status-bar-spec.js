@@ -3,7 +3,7 @@
 import { MODES } from '../lib/consts'
 import { simulateKeySequence, initWorkspace } from './helpers'
 
-describe('KakMode', () => {
+describe('status bar', () => {
   let workspaceElement, mainModule
 
   beforeEach(async () => {
@@ -14,15 +14,15 @@ describe('KakMode', () => {
     it('displays mode and handles mode update', () => {
       const getStatusIndicator = () =>
         workspaceElement.querySelector('kak-mode-status')
-      expect(getStatusIndicator().innerText.trim()).toEqual(
+      expect(getStatusIndicator().innerText.trim()).toBe(
         MODES.NORMAL.inStatusBar
       )
-      expect(mainModule.state.mode).toEqual(MODES.NORMAL)
+      expect(mainModule.state.mode).toBe(MODES.NORMAL)
       simulateKeySequence('i')
-      expect(getStatusIndicator().innerText.trim()).toEqual(
+      expect(getStatusIndicator().innerText.trim()).toBe(
         MODES.INSERT.inStatusBar
       )
-      expect(mainModule.state.mode).toEqual(MODES.INSERT)
+      expect(mainModule.state.mode).toBe(MODES.INSERT)
     })
   })
 })

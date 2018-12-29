@@ -11,7 +11,7 @@ import {
   mapTests,
 } from './helpers'
 
-describe('KakMode', () => {
+describe('goto', () => {
   const text = `text
   some more text
   then even more text

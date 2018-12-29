@@ -16,9 +16,13 @@ export const initWorkspace = async () => {
   return { workspaceElement, mainModule }
 }
 
+const isUpperCaseLetter = char => !!char.match(/[A-Z]/)
 export const simulateKey = key => {
   const event = atom.keymaps.constructor.buildKeydownEvent(key, {
     target: document.activeElement,
+    ...(isUpperCaseLetter(key) && {
+      shift: true,
+    }),
   })
   atom.keymaps.handleKeyboardEvent(event)
 }
