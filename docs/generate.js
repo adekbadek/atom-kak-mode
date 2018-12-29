@@ -27,13 +27,13 @@ const generateHTMLDocs = async () => {
   const sections = [
     {
       name: 'normal mode commands',
-      commands: getByTagName('normal', ['shift']),
-      auxCols: ['with shift'],
+      commands: getByTagName('normal', ['shift', 'config']),
+      auxCols: ['with shift', 'config'],
     },
     {
       name: 'goto commands',
-      commands: getByTagName('goto'),
-      auxCols: [],
+      commands: getByTagName('goto', ['config']),
+      auxCols: ['config'],
     },
   ]
 

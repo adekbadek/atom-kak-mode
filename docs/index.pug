@@ -28,7 +28,12 @@ html
               each command in section.commands
                 tr
                   td.bt.tr.ph4
-                    h1.code.mv1.ml2= command.name
+                    if command.name.length > 3
+                      h2.code.mv1.ml2= command.name
+                    else 
+                      h1.code.mv1.ml2= command.name
                   td.pr2.bt
                     span.dib.mr1= command.description
                   td.pr2.bt= command.shift
+                  td.pr2.bt
+                    code= command.config
