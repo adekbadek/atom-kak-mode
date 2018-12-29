@@ -27,6 +27,7 @@
   },
   "atomTestRunner": "./spec/custom-runner",
   "dependencies": {
+    "escape-string-regexp": "^1.0.5",
     "ramda": "^0.26.1"
   },
   "devDependencies": {
