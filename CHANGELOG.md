@@ -1,3 +1,16 @@
+# [1.5.0](https://github.com/adekbadek/atom-kak-mode/compare/v1.4.0...v1.5.0) (2018-12-29)
+
+
+### Bug Fixes
+
+* **o:** o/O inserting multiple newlines ([574ebaf](https://github.com/adekbadek/atom-kak-mode/commit/574ebaf)), closes [#4](https://github.com/adekbadek/atom-kak-mode/issues/4)
+
+
+### Features
+
+* **config:** enables configuration of chars handled by m command ([9492744](https://github.com/adekbadek/atom-kak-mode/commit/9492744))
+* **y:** if none selected, copy line ([a578274](https://github.com/adekbadek/atom-kak-mode/commit/a578274))
+
 # [1.4.0](https://github.com/adekbadek/atom-kak-mode/compare/v1.3.1...v1.4.0) (2018-12-29)
 
 
