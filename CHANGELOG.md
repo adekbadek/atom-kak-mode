@@ -1,3 +1,12 @@
+# [1.6.0](https://github.com/adekbadek/atom-kak-mode/compare/v1.5.0...v1.6.0) (2018-12-30)
+
+
+### Features
+
+* ; key handling - clearing selection ([a9e51a6](https://github.com/adekbadek/atom-kak-mode/commit/a9e51a6))
+* f,t - handle alt modifier key ([9aaf862](https://github.com/adekbadek/atom-kak-mode/commit/9aaf862))
+* f,t keys handling - selecting to matching chars ([8eb07f3](https://github.com/adekbadek/atom-kak-mode/commit/8eb07f3))
+
 # [1.5.0](https://github.com/adekbadek/atom-kak-mode/compare/v1.4.0...v1.5.0) (2018-12-29)
 
 
