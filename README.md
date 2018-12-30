@@ -5,6 +5,6 @@
 
 [Kakoune](http://kakoune.org) emulator [for Atom](https://atom.io/packages/kak-mode).
 
-A 🚧 **WIP** 🚧, not really fully-featured.
+A 🚧 **WIP** 🚧, not yet fully-featured.
 
 ### [📖 docs](https://adekbadek.github.io/atom-kak-mode/)

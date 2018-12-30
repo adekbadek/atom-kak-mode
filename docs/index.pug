@@ -1,39 +1,54 @@
+mixin link(url, text)
+  a.green.link.fw6(href=url)= text
+  
+mixin section({name, description})
+  .bt.b--black-20.pv4
+    .mw8.center
+      h2.mt0= name
+      if description
+        .measure.mb4 !{description}
+      block
+
 doctype html
 html
   head
     meta(charset='UTF-8')
     title atom-kak-mode
     link(rel='stylesheet', href='https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css')
-  body.sans-serif.near-black.bg-white
-    .mw7.center
-      .pb3.mb4
-        h1.f1.mb1.i atom-kak-mode
+  body.sans-serif.black-70.bg-white
+    .mw8.mv5.center.flex.justify-between
+      .measure
+        h1.f1.mt0.mb1.i atom-kak-mode
         span 
-          a(href='http://kakoune.org') Kakoune
+          +link('http://kakoune.org', 'Kakoune')
           span  emulator for Atom.
-    .bt.pv4
-      .mw7.center
-        h2.mt0 installation
-        code $ apm install kak-mode
+      div.tr.f6.pt2
+        = `v${packageInfo.version}`
+        br
+        .pt1
+          +link(packageInfo.repository, 'github')
+        .pt1
+          +link(`https://atom.io/packages/${packageInfo.name}`, 'apm')
+    +section({name: 'installation'})
+      code $ apm install kak-mode
     each section in sections
-      .bt.pv4
-        .mw7.center
-          h2.mt0= section.name
-          table(cellspacing='0').w-100
-            thead
-              tr.tl
-                each colName, index in ['key', 'description', ...section.auxCols]
-                  th(class=(index === 0 ? 'tr pr4' : 'tl')).pv2= colName
-            tbody
-              each command in section.commands
-                tr
-                  td.bt.tr.ph4
-                    if command.name.length > 3
-                      h2.code.mv1.ml2= command.name
-                    else 
-                      h1.code.mv1.ml2= command.name
-                  td.pr2.bt
-                    span.dib.mr1= command.description
-                  td.pr2.bt= command.shift
-                  td.pr2.bt
-                    code= command.config
+      +section(section)
+        table(cellspacing='0').w-100
+          thead
+            tr.tl
+              each colName, index in ['key', 'description', ...section.auxCols]
+                th(class=(index === 0 ? 'tr pr4' : 'tl')).pv2= colName
+          tbody
+            each command in section.commands
+              tr
+                td.bt.b--black-20.tr.ph4
+                  if command.name.length > 3
+                    h2.code.mv1.ml2= command.name
+                  else 
+                    h1.code.mv1.ml2= command.name
+                td.pr2.bt.b--black-20
+                  span.dib.mr1= command.description
+                td.pr2.bt.b--black-20= command.shift
+                td.pr2.bt.b--black-20= command.alt
+                td.pr2.bt.b--black-20
+                  code= command.config

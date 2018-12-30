@@ -1,6 +1,9 @@
 const fs = require('fs')
 const pug = require('pug')
+const md = require('markdown-it')()
 const documentation = require('documentation')
+
+const packageInfo = require('../package.json')
 
 const getTag = (tagName, tags) => tags.find(({ title }) => title === tagName)
 
@@ -27,19 +30,21 @@ const generateHTMLDocs = async () => {
   const sections = [
     {
       name: 'normal mode commands',
-      commands: getByTagName('normal', ['shift', 'config']),
-      auxCols: ['with shift', 'config'],
+      commands: getByTagName('normal', ['shift', 'alt', 'config']),
+      auxCols: ['with shift', 'with alt', 'config'],
     },
     {
       name: 'goto commands',
-      commands: getByTagName('goto', ['config']),
-      auxCols: ['config'],
+      description: md.render(
+        'Go to mode is activated by pressing `g` key - a menu will appear listing the possible moves.'
+      ),
+      commands: getByTagName('goto'),
     },
-  ]
+  ].map(v => ({ auxCols: [], ...v }))
 
   fs.writeFileSync(
     './docs/index.html',
-    pug.renderFile('./docs/index.pug', { sections })
+    pug.renderFile('./docs/index.pug', { sections, packageInfo })
   )
 }
 

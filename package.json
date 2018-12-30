@@ -49,6 +49,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "husky": "^1.2.1",
     "lint-staged": "^8.1.0",
+    "markdown-it": "^8.4.2",
     "nodemon": "^1.18.9",
     "prettier": "^1.15.3",
     "prettier-standard": "^8.0.1",
