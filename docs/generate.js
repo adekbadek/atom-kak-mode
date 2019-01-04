@@ -2,6 +2,7 @@ const fs = require('fs')
 const pug = require('pug')
 const md = require('markdown-it')()
 const documentation = require('documentation')
+const R = require('ramda')
 
 const packageInfo = require('../package.json')
 
@@ -27,12 +28,23 @@ const generateHTMLDocs = async () => {
       return acc
     }, [])
 
+  const getSection = (name, { tagName } = {}) => {
+    const commands = getByTagName(tagName || name, ['shift', 'alt', 'config'])
+    return {
+      name: `${name} commands`,
+      commands,
+      auxCols: [
+        ...(R.any(R.prop('shift'), commands) ? ['with shift'] : []),
+        ...(R.any(R.prop('alt'), commands) ? ['with alt'] : []),
+        ...(R.any(R.prop('config'), commands) ? ['config'] : []),
+      ],
+    }
+  }
+
   const sections = [
-    {
-      name: 'normal mode commands',
-      commands: getByTagName('normal', ['shift', 'alt', 'config']),
-      auxCols: ['with shift', 'with alt', 'config'],
-    },
+    getSection('movement'),
+    getSection('changes'),
+    getSection('selections'),
     {
       name: 'goto commands',
       description: md.render(
@@ -40,6 +52,7 @@ const generateHTMLDocs = async () => {
       ),
       commands: getByTagName('goto'),
     },
+    getSection('other'),
   ].map(v => ({ auxCols: [], ...v }))
 
   fs.writeFileSync(
