@@ -28,11 +28,12 @@ const generateHTMLDocs = async () => {
       return acc
     }, [])
 
-  const getSection = (name, { tagName } = {}) => {
+  const getSection = (name, { tagName, description } = {}) => {
     const commands = getByTagName(tagName || name, ['shift', 'alt', 'config'])
     return {
       name: `${name} commands`,
       commands,
+      description,
       auxCols: [
         ...(R.any(R.prop('shift'), commands) ? ['with shift'] : []),
         ...(R.any(R.prop('alt'), commands) ? ['with alt'] : []),
@@ -45,10 +46,16 @@ const generateHTMLDocs = async () => {
     getSection('movement'),
     getSection('changes'),
     getSection('selections'),
+    getSection('search', {
+      description: md.render(
+        `Searching is triggered with \`/\` key - the search pattern input will be displayed in the status bar. Either a regular expression or a string can be entered.
+        If the regular expression is invalid, is will be treated as a query string.`
+      ),
+    }),
     {
       name: 'goto commands',
       description: md.render(
-        'Go to mode is activated by pressing `g` key - a menu will appear listing the possible moves.'
+        'Go to mode is activated with `g` key - a menu will appear listing the possible moves.'
       ),
       commands: getByTagName('goto'),
     },

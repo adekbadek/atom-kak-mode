@@ -1,6 +1,7 @@
 'use babel'
 
-import { toPairs } from 'ramda'
+import { Range } from 'atom'
+import { head, toPairs, flatten } from 'ramda'
 
 export const initWorkspace = async () => {
   const workspaceElement = atom.views.getView(atom.workspace)
@@ -17,17 +18,36 @@ export const initWorkspace = async () => {
 }
 
 const isUpperCaseLetter = char => !!char.match(/[A-Z]/)
+
+const modifierKeyRegex = /(<\w*-[^>]>)/
+const withModifierKeyRegex = new RegExp(`${modifierKeyRegex.source}|(\\w)`)
+
 export const simulateKey = key => {
+  // eslint-disable-next-line no-unused-vars
+  let _, modifier
+  if (key.match(modifierKeyRegex)) {
+    ;[_, modifier, key] = key.match(/<(\w*)-([^>])>/)
+  }
+
   const event = atom.keymaps.constructor.buildKeydownEvent(key, {
     target: document.activeElement,
-    ...(isUpperCaseLetter(key) && {
+    ...((isUpperCaseLetter(key) || modifier === 'shift') && {
       shift: true,
+    }),
+    ...(modifier === 'alt' && {
+      alt: true,
     }),
   })
   atom.keymaps.handleKeyboardEvent(event)
 }
 
-export const simulateKeySequence = keys => keys.split('').map(simulateKey)
+export const simulateKeySequence = keys => {
+  const keysWithModifers = keys
+    .split(withModifierKeyRegex)
+    .filter(v => !!v)
+    .map(keys => (keys.match(withModifierKeyRegex) ? keys : keys.split('')))
+  return flatten(keysWithModifers).map(simulateKey)
+}
 
 export const getFirstCursorPosition = () => {
   const editor = atom.workspace.getActiveTextEditor()
@@ -52,3 +72,11 @@ export const mapTests = (tests, fn) => {
     fn({ keyStroke, expectation, description: desc.join(' ') })
   })
 }
+
+export const getCursorRange = editor =>
+  head(editor.getCursors().map(({ selection }) => selection.getBufferRange()))
+
+export const setCursorAtBeginning = editor =>
+  editor
+    .getCursors()
+    .map(({ selection }) => selection.setBufferRange(new Range([0, 0], [0, 0])))

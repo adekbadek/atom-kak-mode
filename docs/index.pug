@@ -48,7 +48,10 @@ html
                     h1.code.mv1.ml2= command.name
                 td.pr2.bt.b--black-20
                   span.dib.mr1= command.description
-                td.pr2.bt.b--black-20= command.shift
-                td.pr2.bt.b--black-20= command.alt
-                td.pr2.bt.b--black-20
-                  code= command.config
+                if section.auxCols.includes('with shift')
+                  td.pr2.bt.b--black-20= command.shift
+                if section.auxCols.includes('with alt')
+                  td.pr2.bt.b--black-20= command.alt
+                if section.auxCols.includes('config')
+                  td.pr2.bt.b--black-20
+                    code= command.config

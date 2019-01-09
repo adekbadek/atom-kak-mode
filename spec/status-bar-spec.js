@@ -17,12 +17,12 @@ describe('status bar', () => {
       expect(getStatusIndicator().innerText.trim()).toBe(
         MODES.NORMAL.inStatusBar
       )
-      expect(mainModule.state.mode).toBe(MODES.NORMAL)
+      expect(mainModule.state.mode).toEqual(MODES.NORMAL)
       simulateKeySequence('i')
       expect(getStatusIndicator().innerText.trim()).toBe(
         MODES.INSERT.inStatusBar
       )
-      expect(mainModule.state.mode).toBe(MODES.INSERT)
+      expect(mainModule.state.mode).toEqual(MODES.INSERT)
     })
   })
 })
