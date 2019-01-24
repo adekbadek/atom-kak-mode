@@ -11,13 +11,14 @@ import {
 
 describe('search', () => {
   const text = `the text is here
+  Apples and Apples, and then more Apples
   with many a line
   and some numbers: 42, 123, 75
 `
-  let buffer, editor
+  let buffer, editor, mainModule
 
   beforeEach(async () => {
-    await initWorkspace()
+    ;({ mainModule } = await initWorkspace())
     editor = atom.workspace.getActiveTextEditor()
     buffer = editor.getBuffer()
     buffer.setText(text)
@@ -38,6 +39,29 @@ describe('search', () => {
     },
     ({ keyStroke, expectation, description }) => {
       it(description, () => {
+        simulateKeySequence(keyStroke)
+        expect(buffer.getTextInRange(getCursorRange(editor))).toEqual(
+          expectation
+        )
+      })
+    }
+  )
+
+  // last pattern handling
+  const lastPattern = 'Apples'
+  mapTests(
+    {
+      n: lastPattern,
+      '<shift-n>': `the text is here
+  Apples`,
+      'ge<alt-n>': lastPattern,
+      'ge<alt-n><shift-e>': `${lastPattern}
+  with`,
+      'nn<shift-n>': `${lastPattern}, and then more ${lastPattern}`,
+    },
+    ({ keyStroke, expectation, description }) => {
+      it(description, () => {
+        mainModule.updateSearchPattern({ lastPattern })
         simulateKeySequence(keyStroke)
         expect(buffer.getTextInRange(getCursorRange(editor))).toEqual(
           expectation
