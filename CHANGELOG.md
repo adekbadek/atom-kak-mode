@@ -1,3 +1,19 @@
+# [1.7.0](https://github.com/adekbadek/atom-kak-mode/compare/v1.6.0...v1.7.0) (2019-01-24)
+
+
+### Bug Fixes
+
+* **select-to-char:** handle uppercase ([b7796b3](https://github.com/adekbadek/atom-kak-mode/commit/b7796b3))
+
+
+### Features
+
+* **count:** improvements ([79a247a](https://github.com/adekbadek/atom-kak-mode/commit/79a247a))
+* **search:** handle last pattern search (n key) ([2bfcbe1](https://github.com/adekbadek/atom-kak-mode/commit/2bfcbe1))
+* %, ~, ` keys handling (select all, case changes) ([d429940](https://github.com/adekbadek/atom-kak-mode/commit/d429940))
+* <, > keys handling; better d, c ([ad96b5b](https://github.com/adekbadek/atom-kak-mode/commit/ad96b5b))
+* set up search command; update status bar ([ee52113](https://github.com/adekbadek/atom-kak-mode/commit/ee52113))
+
 # [1.6.0](https://github.com/adekbadek/atom-kak-mode/compare/v1.5.0...v1.6.0) (2018-12-30)
 
 
