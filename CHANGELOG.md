@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/adekbadek/atom-kak-mode/compare/v1.7.1...v1.8.0) (2019-01-30)
+
+
+### Features
+
+* add cursors on <alt-k>, <alt-j> ([0fc8418](https://github.com/adekbadek/atom-kak-mode/commit/0fc8418))
+
 ## [1.7.1](https://github.com/adekbadek/atom-kak-mode/compare/v1.7.0...v1.7.1) (2019-01-30)
 
 
