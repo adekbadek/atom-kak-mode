@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/adekbadek/atom-kak-mode/compare/v1.7.0...v1.7.1) (2019-01-30)
+
+
+### Bug Fixes
+
+* fixes removing cursors on mode change ([3663657](https://github.com/adekbadek/atom-kak-mode/commit/3663657)), closes [#6](https://github.com/adekbadek/atom-kak-mode/issues/6)
+
 # [1.7.0](https://github.com/adekbadek/atom-kak-mode/compare/v1.6.0...v1.7.0) (2019-01-24)
 
 
