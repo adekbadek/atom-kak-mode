@@ -1,3 +1,11 @@
+# [1.9.0](https://github.com/adekbadek/atom-kak-mode/compare/v1.8.0...v1.9.0) (2019-02-08)
+
+
+### Features
+
+* propagate escape key press ([c249c19](https://github.com/adekbadek/atom-kak-mode/commit/c249c19))
+* **settings:** go to normal on pane change setting ([a4dbb5b](https://github.com/adekbadek/atom-kak-mode/commit/a4dbb5b))
+
 # [1.8.0](https://github.com/adekbadek/atom-kak-mode/compare/v1.7.1...v1.8.0) (2019-01-30)
 
 
