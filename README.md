@@ -7,4 +7,12 @@
 
 A 🚧 **WIP** 🚧, not yet fully-featured.
 
+## Installation
+
+Install using [Atom's package installer](http://flight-manual.atom.io/using-atom/sections/atom-packages/), using the GUI or the command line:
+
+```shell
+apm install kak-mode
+```
+
 ### [📖 docs](https://adekbadek.github.io/atom-kak-mode/)
