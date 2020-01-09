@@ -36,7 +36,7 @@
     "@semantic-release/apm": "^1.0.0",
     "@semantic-release/changelog": "^3.0.1",
     "@semantic-release/git": "^7.0.5",
-    "atom-jasmine3-test-runner": "^4.1.1",
+    "atom-jasmine3-test-runner": "^4.3.10",
     "commitizen": "^3.0.5",
     "concurrently": "^4.1.0",
     "cz-conventional-changelog": "^2.1.0",
