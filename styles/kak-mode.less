@@ -42,5 +42,20 @@ atom-workspace.kak-mode-normal {
     background: @syntax-cursor-color; // Setting background creates a block cursor
     border: none;
     opacity: 0.5;
+
+    &.at-end-of-selection {
+        background: unset;
+
+        &::before {
+            background: @syntax-cursor-color;
+            border: none;
+            content: "";
+            height: 100%;
+            opacity: 0.5;
+            position: absolute;
+            right: 100%;
+            width: 100%;
+        }
+    }
   }
 }
