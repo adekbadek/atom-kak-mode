@@ -1,3 +1,5 @@
+@import 'syntax-variables';
+
 kak-mode-status {
   color: @text-color-success;
   font-size: 18px;
@@ -29,5 +31,16 @@ kak-mode-status {
       font-size: 12px;
       vertical-align: middle;
     }
+  }
+}
+
+// Cursor styles
+// =============================================================================
+
+atom-workspace.kak-mode-normal {
+  .cursor {
+    background: @syntax-cursor-color; // Setting background creates a block cursor
+    border: none;
+    opacity: 0.5;
   }
 }
