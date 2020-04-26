@@ -64,7 +64,6 @@ jobs:
     docker:
       - image: circleci/node:latest
     steps:
-      # Restore project state
       - attach_workspace:
           at: /tmp
       - run:
@@ -82,7 +81,6 @@ jobs:
   publish:
     <<: *defaults
     steps:
-      # Restore project state
       - attach_workspace:
           at: /tmp
       - run:
@@ -98,12 +96,15 @@ jobs:
           command: npm run semantic-release
   docs:
     <<: *defaults
-    docker:
-      - image: circleci/node:latest
     steps:
-      # Restore project state
+      - checkout
       - attach_workspace:
           at: /tmp
+      - run:
+          name: Install NPM
+          command: |
+            sudo apt update
+            sudo apt install npm -y --no-install-suggests --no-install-recommends
       - run: git pull origin master
       - run: git checkout -b gh-pages
       - run: git config user.email $GITHUB_EMAIL
