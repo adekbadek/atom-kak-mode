@@ -13,7 +13,8 @@
     "docs:dev-watch": "nodemon --watch lib --watch docs/*.pug docs/generate.js",
     "docs:dev-serve": "cd docs && reload -b",
     "docs:dev": "concurrently npm:docs:dev-*",
-    "format": "prettier-standard"
+    "format": "prettier-standard",
+    "lint": "eslint lib"
   },
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
