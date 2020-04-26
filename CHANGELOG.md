@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/adekbadek/atom-kak-mode/compare/v1.9.0...v1.10.0) (2020-04-26)
+
+
+### Features
+
+* use block cursor in normal mode ([#22](https://github.com/adekbadek/atom-kak-mode/issues/22)) ([40f6a5e](https://github.com/adekbadek/atom-kak-mode/commit/40f6a5e)), closes [#8](https://github.com/adekbadek/atom-kak-mode/issues/8)
+
 # [1.9.0](https://github.com/adekbadek/atom-kak-mode/compare/v1.8.0...v1.9.0) (2019-02-08)
 
 
