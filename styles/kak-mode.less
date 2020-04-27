@@ -37,10 +37,8 @@ kak-mode-status {
 // Cursor styles
 // =============================================================================
 
-atom-workspace.kak-mode-normal {
-  .cursor {
-    background: @syntax-cursor-color; // Setting background creates a block cursor
-    border: none;
-    opacity: 0.5;
-  }
+atom-text-editor.kak-mode-normal .cursor {
+  background: @syntax-cursor-color; // Setting background creates a block cursor
+  border: none;
+  opacity: 0.5;
 }
