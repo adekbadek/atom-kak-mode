@@ -1,3 +1,11 @@
+## [1.10.1](https://github.com/adekbadek/atom-kak-mode/compare/v1.10.0...v1.10.1) (2020-04-29)
+
+
+### Bug Fixes
+
+* **cursor:** apply styling to workspace editors only ([3e02f58](https://github.com/adekbadek/atom-kak-mode/commit/3e02f58))
+* abort key hijacking if no active editor ([a9c1325](https://github.com/adekbadek/atom-kak-mode/commit/a9c1325)), closes [#19](https://github.com/adekbadek/atom-kak-mode/issues/19)
+
 # [1.10.0](https://github.com/adekbadek/atom-kak-mode/compare/v1.9.0...v1.10.0) (2020-04-26)
 
 

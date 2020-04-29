@@ -1,7 +1,7 @@
 {
   "name": "kak-mode",
   "main": "./lib/kak-mode",
-  "version": "1.10.0",
+  "version": "1.10.1",
   "description": "Kakoune emulator",
   "keywords": [],
   "repository": "https://github.com/adekbadek/atom-kak-mode",
