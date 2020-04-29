@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/adekbadek/atom-kak-mode/compare/v1.10.1...v1.11.0) (2020-04-29)
+
+
+### Features
+
+* go to line feature ([a65c2c6](https://github.com/adekbadek/atom-kak-mode/commit/a65c2c6)), closes [#18](https://github.com/adekbadek/atom-kak-mode/issues/18)
+
 ## [1.10.1](https://github.com/adekbadek/atom-kak-mode/compare/v1.10.0...v1.10.1) (2020-04-29)
 
 
