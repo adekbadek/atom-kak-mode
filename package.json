@@ -54,7 +54,7 @@
     "nodemon": "^1.18.9",
     "prettier": "^1.15.3",
     "prettier-standard": "^8.0.1",
-    "pug": "^2.0.3",
+    "pug": "^3.0.1",
     "reload": "^2.4.0",
     "semantic-release": "^15.13.0"
   },
